@@ -21,6 +21,20 @@ const getTasks = async (req, res) => {
   }
 };
 
+const getTasksByEmployeeId = async (req, res) => {
+    const { employee_id } = req.params;
+    try {
+      const tasks = await Task.find({ assigned_to: employee_id }).populate('customer_id assigned_to');
+      if (!tasks || tasks.length === 0) {
+        return res.status(404).json({ message: 'No tasks found for this employee' });
+      }
+      res.status(200).json(tasks);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+  
+  
 const updateTask = async (req, res) => {
   const { id } = req.params;
   try {
@@ -49,4 +63,4 @@ const deleteTask = async (req, res) => {
   }
 };
 
-module.exports = { createTask, getTasks, deleteAllTasks, updateTask, deleteTask };
+module.exports = { createTask, getTasks, deleteAllTasks, updateTask, getTasksByEmployeeId, deleteTask };
