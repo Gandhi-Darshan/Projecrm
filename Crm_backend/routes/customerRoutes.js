@@ -1,5 +1,5 @@
 const express = require('express');
-const { createCustomer, getCustomers, getCustomersByid, updateCustomer, deleteCustomer } = require('../Controllers/CustomerController');
+const { createCustomer, getCustomers, getCustomersByid, updateCustomer, deleteCustomer } = require('../controllers/customerController');
 const router = express.Router();
 
 router.route('/')
