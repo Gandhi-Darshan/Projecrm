@@ -10,12 +10,16 @@ const Insurance = require('../models/Insurance'); // Assuming Insurance model is
 
 // Create a new insurance record
 const createInsurance = async (req, res) => {
-  try {
-    const newInsurance = await Insurance.save(req.body);
-    res.status(201).json(newInsurance);
-  } catch (error) {
-    res.status(500).json({ message: 'Error creating insurance', error });
-  }
+    const { provider, policyNumber, coverageDetails, expiryDate} = req.body;
+    const insurance = new Insurance({ provider, policyNumber, coverageDetails, expiryDate});
+  
+    try {
+      await insurance.save();
+      res.status(201).json(insurance);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+    
 };
 
 // Get all insurance records

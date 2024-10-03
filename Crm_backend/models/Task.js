@@ -5,6 +5,9 @@ const taskSchema = new mongoose.Schema({
   customer_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer', required: true },
   assigned_to: { type: mongoose.Schema.Types.ObjectId, ref: 'Employee', required: true },
   due_date: { type: Date, required: true },
+  //priority
+  //desprition
+  //remark
   status: { type: String, enum: ['pending', 'completed', 'in-progress'], default: 'pending' },
 //   equipment_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Equipment' }
 }, { timestamps: true });
