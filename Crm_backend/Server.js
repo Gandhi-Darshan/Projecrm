@@ -12,7 +12,7 @@ const taskRoutes = require("./routes/taskRoutes");
 // const insuranceRoutes = require('./routes/insuranceRoutes');
 const employeeRoutes = require("./routes/employeeRoutes");
 const adminRoutes = require("./routes/adminRoutes");
-const authRoutes = require('./routes/authroutes');
+const authRoutes = require('./routes/authRoutes');
 
 dotenv.config();
 
