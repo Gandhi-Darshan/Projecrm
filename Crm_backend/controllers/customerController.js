@@ -14,7 +14,7 @@ const createCustomer = async (req, res) => {
 
 const getCustomers = async (req, res) => {
   try {
-    const customers = await Customer.find();
+    const customers = await Customer.find().populate('insurance_details');
     res.status(200).json(customers);
   } catch (error) {
     res.status(400).json({ message: error.message });

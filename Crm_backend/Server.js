@@ -9,10 +9,13 @@ const taskRoutes = require("./routes/taskRoutes");
 // const followUpRoutes = require('./routes/followUpRoutes');
 // const reportRoutes = require('./routes/reportRoutes');
 // const equipmentRoutes = require('./routes/equipmentRoutes');
-// const insuranceRoutes = require('./routes/insuranceRoutes');
-const employeeRoutes = require("./routes/employeeRoutes");
-const adminRoutes = require("./routes/adminRoutes");
+
+ const insuranceRoutes = require('./routes/insuranceRoutes');
+ const employeeRoutes = require('./routes/employeeRoutes');
+ const adminRoutes = require('./routes/adminRoutes');
+ const insuranceRoutes = require('./routes/insuranceRoutes');
 const authRoutes = require('./routes/authRoutes');
+
 
 dotenv.config();
 
@@ -36,10 +39,10 @@ app.use("/api/tasks", taskRoutes);
 // app.use('/api/followups', followUpRoutes);
 // app.use('/api/reports', reportRoutes);
 // app.use('/api/equipments', equipmentRoutes);
-// app.use('/api/insurances', insuranceRoutes);
-app.use("/api/employees", employeeRoutes);
-app.use("/api/admins", adminRoutes);
-app.use("/api/auth", authRoutes);
+ app.use('/api/insurances', insuranceRoutes);
+ app.use('/api/employees', employeeRoutes);
+ app.use('/api/admins', adminRoutes);
+  app.use("/api/auth", authRoutes);
 
 // Error middleware
 app.use(errorHandler);
