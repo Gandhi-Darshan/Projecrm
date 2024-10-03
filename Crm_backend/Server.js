@@ -9,8 +9,6 @@ const taskRoutes = require("./routes/taskRoutes");
 // const followUpRoutes = require('./routes/followUpRoutes');
 // const reportRoutes = require('./routes/reportRoutes');
 // const equipmentRoutes = require('./routes/equipmentRoutes');
-
- const insuranceRoutes = require('./routes/insuranceRoutes');
  const employeeRoutes = require('./routes/employeeRoutes');
  const adminRoutes = require('./routes/adminRoutes');
  const insuranceRoutes = require('./routes/insuranceRoutes');
