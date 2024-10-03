@@ -1,3 +1,9 @@
+//findbyid
+//save
+//find
+//findbyidandupdate
+//findbyidanddelete
+
 // InsuranceController.js
 
 const Insurance = require('../models/Insurance'); // Assuming Insurance model is here
@@ -5,7 +11,7 @@ const Insurance = require('../models/Insurance'); // Assuming Insurance model is
 // Create a new insurance record
 const createInsurance = async (req, res) => {
   try {
-    const newInsurance = await Insurance.create(req.body);
+    const newInsurance = await Insurance.save(req.body);
     res.status(201).json(newInsurance);
   } catch (error) {
     res.status(500).json({ message: 'Error creating insurance', error });
@@ -26,7 +32,7 @@ const getAllInsuranceDetails = async (req, res) => {
 const getInsuranceDetailsById = async (req, res) => {
   const { insuranceId } = req.params;
   try {
-    const insurance = await Insurance.findOne({ insuranceId });
+    const insurance = await Insurance.findById({ insuranceId });
     if (!insurance) return res.status(404).json({ message: 'Insurance not found' });
     res.status(200).json(insurance);
   } catch (error) {
@@ -38,7 +44,7 @@ const getInsuranceDetailsById = async (req, res) => {
 const updateInsuranceDetails = async (req, res) => {
   const { insuranceId } = req.params;
   try {
-    const updatedInsurance = await Insurance.findOneAndUpdate(
+    const updatedInsurance = await Insurance.findByIdAndUpdate(
       { insuranceId },
       { $set: req.body },
       { new: true }
@@ -54,7 +60,7 @@ const updateInsuranceDetails = async (req, res) => {
 const deleteInsuranceDetails = async (req, res) => {
   const { insuranceId } = req.params;
   try {
-    const deletedInsurance = await Insurance.findOneAndDelete({ insuranceId });
+    const deletedInsurance = await Insurance.findByIdAndDelete({ insuranceId });
     if (!deletedInsurance) return res.status(404).json({ message: 'Insurance not found' });
     res.status(200).json({ message: 'Insurance deleted', deletedInsurance });
   } catch (error) {
