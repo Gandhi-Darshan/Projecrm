@@ -20,6 +20,16 @@ const getTasks = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+const getTasksById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const tasks = await Task.findById(id, req.body).populate('customer_id assigned_to');
+    res.status(200).json(tasks);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 
 const getTasksByEmployeeId = async (req, res) => {
     const { employee_id } = req.params;
@@ -63,4 +73,4 @@ const deleteTask = async (req, res) => {
   }
 };
 
-module.exports = { createTask, getTasks, deleteAllTasks, updateTask, getTasksByEmployeeId, deleteTask };
+module.exports = { createTask, getTasks, deleteAllTasks, updateTask, getTasksByEmployeeId,getTasksById, deleteTask };
