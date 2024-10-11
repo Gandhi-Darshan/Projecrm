@@ -69,7 +69,7 @@ export const fetchEmployeeById = async (id) => {
 };
 
 // Create new employee
-export const createEmployee = async (employeeData) => {
+export const addEmployee = async (employeeData) => {
   const response = await fetch(`${API_URL}/employees`, {
     method: "POST",
     headers: {
