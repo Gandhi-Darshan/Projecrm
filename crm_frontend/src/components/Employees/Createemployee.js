@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-//import './css/CreateEmployee.css';
+import { fetchEmployees } from '../../utils/api'; // Adjust based on your API functions
+import './css/CreateEmployee.css'; // Ensure you have a CSS file for styling
 
 const CreateEmployee = ({ onCreate, onEdit, employeeToEdit, onCancel, isOpen }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('');
-  const [password, setPassword] = useState(''); // Password for new employees
 
   useEffect(() => {
     if (employeeToEdit) {
@@ -13,25 +13,25 @@ const CreateEmployee = ({ onCreate, onEdit, employeeToEdit, onCancel, isOpen }) 
       setName(employeeToEdit.name);
       setEmail(employeeToEdit.email);
       setRole(employeeToEdit.role);
-      // Password is not shown or modified when editing
     }
-  }, [employeeToEdit]);
+  }, [employeeToEdit]); // Re-fetch data if employeeToEdit changes
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const employeeData = { name, email, role, password };
-    
+    const employeeData = {
+      name,
+      email,
+      role,
+    };
     if (employeeToEdit) {
-      onEdit(employeeToEdit._id, employeeData); // Call onEdit if editing
+      await onEdit(employeeToEdit._id, employeeData); // Call onEdit if editing
     } else {
-      onCreate(employeeData); // Call onCreate if creating
+      await onCreate(employeeData); // Call onCreate if creating
     }
-
     // Reset form fields
     setName('');
     setEmail('');
     setRole('');
-    setPassword('');
   };
 
   return (
@@ -40,42 +40,35 @@ const CreateEmployee = ({ onCreate, onEdit, employeeToEdit, onCancel, isOpen }) 
         <div className="modal">
           <h3>{employeeToEdit ? 'Edit Employee' : 'Create Employee'}</h3>
           <form onSubmit={handleSubmit}>
-            <input 
-              type="text" 
-              placeholder="Name" 
-              value={name} 
-              onChange={(e) => setName(e.target.value)} 
-              required 
-            />
-            <input 
-              type="email" 
-              placeholder="Email" 
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)} 
-              required 
-            />
-            <select 
-              value={role} 
-              onChange={(e) => setRole(e.target.value)} 
-              required
-            >
-              <option value="" disabled>Select Role</option>
-              <option value="Admin">Admin</option>
-              <option value="Employee">Employee</option>
-            </select>
-            
-            {!employeeToEdit && (
-              <input 
-                type="password" 
-                placeholder="Password" 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
-                required 
+            <label>
+              Name:
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
               />
-            )}
-
+            </label>
+            <label>
+              Email:
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Role:
+              <input
+                type="text"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                required
+              />
+            </label>
             <div className="modal-actions">
-              <button type="submit">{employeeToEdit ? 'Update' : 'Create'}</button>
+              <button type="submit">{employeeToEdit ? 'Update Employee' : 'Create Employee'}</button>
               <button type="button" onClick={onCancel}>Cancel</button>
             </div>
           </form>

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { fetchEmployees } from '../../utils/api'; // Adjust based on your API functions
+import { fetchEmployees, addEmployee } from '../../utils/api'; // Adjust based on your API functions
 import { useNavigate } from 'react-router-dom';
-import CreateEmployee from './Createemployee';
-//import './css/EmployeeList.css';
+import CreateEmployee from './Createemployee'; // Ensure the correct path
+import './css/Empployeelist.css';
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
-  const [isCreating, setIsCreating] = useState(false);
+  const [isCreating, setIsCreating] = useState(false); // State to open Create Employee modal
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,6 +19,19 @@ const EmployeeList = () => {
 
   const handleEmployeeClick = (employeeId) => {
     navigate(`/employees/${employeeId}`); // Navigate to Employee Details page
+  };
+
+  const handleCreateEmployee = async (newEmployee) => {
+    try {
+      await addEmployee(newEmployee); // Ensure you have this function in your API
+      setIsCreating(false); // Close modal
+
+      // Refresh employee list or re-fetch employees
+      const employeeData = await fetchEmployees();
+      setEmployees(employeeData);
+    } catch (error) {
+      console.error("Error creating employee:", error);
+    }
   };
 
   return (
@@ -49,8 +62,8 @@ const EmployeeList = () => {
       {/* Create Employee Modal */}
       {isCreating && (
         <CreateEmployee
-          onCreate={() => setIsCreating(false)}
-          onCancel={() => setIsCreating(false)}
+          onCreate={handleCreateEmployee} // Call to handle new employee creation
+          onCancel={() => setIsCreating(false)} // Close modal on cancel
         />
       )}
     </div>

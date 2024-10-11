@@ -6,8 +6,8 @@ body {
   padding: 0; /* Reset default padding */
 }
 
-/* Main container for the task list */
-.task-list-container {
+/* Main container for the employee list */
+.employee-list-container {
   max-width: 1200px; /* Maximum width for the container */
   margin: 40px auto; /* Center the container with some margin */
   padding: 40px; /* Increased padding inside the container */
@@ -26,7 +26,7 @@ h2 {
 }
 
 /* Button styles */
-.create-task-btn {
+.create-employee-btn {
   display: flex;
   justify-content: flex-end; /* Align button to the right */
   margin-bottom: 30px; /* Space below the button */
@@ -79,22 +79,22 @@ tr:hover {
 
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
-  .task-list-container {
-    width: 90%; /* Full width on smaller screens */
-    padding: 20px; /* Less padding */
+  .employee-list-container {
+      width: 90%; /* Full width on smaller screens */
+      padding: 20px; /* Less padding */
   }
 
   h2 {
-    font-size: 28px; /* Smaller heading */
+      font-size: 28px; /* Smaller heading */
   }
 
   button {
-    width: 100%; /* Full width for button on mobile */
-    margin: 10px 0; /* Margin for button */
+      width: 100%; /* Full width for button on mobile */
+      margin: 10px 0; /* Margin for button */
   }
 
   th, td {
-    font-size: 16px; /* Smaller font size for table */
-    padding: 12px; /* Less padding for mobile */
+      font-size: 16px; /* Smaller font size for table */
+      padding: 12px; /* Less padding for mobile */
   }
 }

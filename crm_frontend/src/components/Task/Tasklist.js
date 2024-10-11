@@ -36,7 +36,7 @@ const TaskList = () => {
  
 
   return (
-    <div>
+    <div   className="employee-list-container">
       <h2>Task List</h2>
       <button onClick={() => setIsCreating(true)}>Create Task</button>
       <table>
