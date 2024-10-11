@@ -6,9 +6,8 @@ import Navbar from './components/Common/Navbar';
 // import Dashboard from './components/Dashboard/Dashboard';
 import TasksList from './components/Task/Tasklist';
 import TaskDetails from './components/Task//Taskdetails';
-// import EmployeeList from './components/Employees/EmployeeList';
-// import CreateEmployee from './components/Employees/CreateEmployee';
-// import UpdateEmployee from './components/Employees/UpdateEmployee';
+ import EmployeeList from './components/Employees/employeeList';
+ import EmployeeDetails from './components/Employees/employeeDetails';
 // import CustomerList from './components/Customers/CustomerList';
 // import CreateCustomer from './components/Customers/CreateCustomer';
 // import UpdateCustomer from './components/Customers/UpdateCustomer';
@@ -28,7 +27,9 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/tasks" element={<TasksList />} />
-          <Route path="/tasks/:id" element={<TaskDetails />} /> {/* Task Details route */}
+          <Route path="/tasks/:id" element={<TaskDetails />} /> 
+          <Route path="/employees" element={<EmployeeList />} />
+          <Route path="/employees/:id" element={<EmployeeDetails />} /> {/* Task Details route */}
           {/* 
           <PrivateRoute path="/" element={<Dashboard />} />
           <PrivateRoute path="/employees" element={<EmployeeList />} />
