@@ -1,8 +1,8 @@
 const Task = require('../models/Task');
 
 const createTask = async (req, res) => {
-  const { task_name, customer_id, assigned_to, due_date, status } = req.body;
-  const task = new Task({ task_name, customer_id, assigned_to, due_date, status });
+  const { task_name, customer_id, assigned_to, due_date, priority, desprition,remark,status } = req.body;
+  const task = new Task({ task_name, customer_id, assigned_to, due_date, priority,desprition,remark,status });
 
   try {
     await task.save();

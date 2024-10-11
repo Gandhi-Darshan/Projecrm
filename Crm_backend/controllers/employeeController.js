@@ -20,6 +20,15 @@ const getEmployees = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+const getEmployeeById = async (req, res) => {
+  const {id} = req.params;
+  try {
+    const employees = await Employee.findById(id, req.body);
+    res.status(200).json(employees);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 
 const updateEmployee = async (req, res) => {
   const { id } = req.params;
@@ -41,4 +50,4 @@ const deleteEmployee = async (req, res) => {
   }
 };
 
-module.exports = { createEmployee, getEmployees, updateEmployee, deleteEmployee };
+module.exports = { createEmployee, getEmployees,getEmployeeById, updateEmployee, deleteEmployee };

@@ -33,14 +33,7 @@ const TaskList = () => {
     setTasks(tasksData);
   };
 
-  const handleEditTask = async (taskId, updatedTask) => {
-    // Call your API to update the task
-    await updateTask(taskId, updatedTask);
-    setTaskToEdit(null); // Close modal
-    // Refresh task list or re-fetch tasks
-    const tasksData = await fetchTasks();
-    setTasks(tasksData);
-  };
+ 
 
   return (
     <div>
@@ -51,9 +44,10 @@ const TaskList = () => {
           <tr>
             <th>ID</th>
             <th>Title</th>
-            <th>Description</th>
+            <th>Customer</th>
             <th>Assigned To</th>
-        
+            <th>Due Date</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -61,9 +55,10 @@ const TaskList = () => {
             <tr key={task._id} onClick={() => handleTaskClick(task._id)}> {/* Navigate on click */}
               <td>{task._id}</td>
               <td>{task.task_name}</td>
-              <td>{task.description}</td>
+              <td>{task.customer_id?.name}</td>
               <td>{task.assigned_to?.name}</td>
-              
+              <td>{new Date(task.due_date).toLocaleDateString()}</td>
+              <td>{task.status}</td>
             </tr>
           ))}
         </tbody>
@@ -72,7 +67,7 @@ const TaskList = () => {
       {/* Render Create Task Modal */}
       <CreateTask
         onCreate={handleCreateTask}
-        onEdit={handleEditTask}
+       
         taskToEdit={taskToEdit}
         onCancel={() => {
           setTaskToEdit(null);
