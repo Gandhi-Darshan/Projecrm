@@ -1,19 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css'
+import React, { useState } from 'react';
+import './Navbar.css'; // Specific styles for Navbar
 
 const Navbar = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   return (
-    <nav>
-      <ul>
-        <li><Link to="/">Dashboard</Link></li>
-        <li><Link to="/tasks">Task</Link></li>
-        <li><Link to="/employees">Employees</Link></li>
-        <li><Link to="/customers">Customers</Link></li>
-        <li><Link to="/insurance">Insurance</Link></li>
-        <li><Link to="/followups">Follow-Ups</Link></li>
-        <li><Link to="/reports">Reports</Link></li>
-      </ul>
+    <nav className="navbar">
+      <div className="right-side">
+        <button className="add-customer">Add New Customers</button>
+        
+        <div className={`user-info ${isDropdownOpen ? 'open' : ''}`}>
+          <span onClick={toggleDropdown}>Admin Name &#9662;</span> {/* Dropdown Arrow */}
+          {isDropdownOpen && (
+            <ul className="dropdown-menu">
+              <li>Profile</li>
+              <li>Logout</li>
+            </ul>
+          )}
+        </div>
+      </div>
     </nav>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { fetchEmployees, addEmployee } from '../../utils/api'; // Adjust based on your API functions
 import { useNavigate } from 'react-router-dom';
-import CreateEmployee from './Createemployee'; // Ensure the correct path
-import './css/Empployeelist.css';
+import CreateEmployee from 'crm_frontend/src/components/Employees/Createemployee.js'; // Ensure the correct path
+import './Css/EmployeeList.css';
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
@@ -35,29 +35,28 @@ const EmployeeList = () => {
   };
 
   return (
-    <div className="employee-list-container">
-      <h2>Employee List</h2>
-      <button onClick={() => setIsCreating(true)} className="create-employee-btn">Create Employee</button>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-          </tr>
-        </thead>
-        <tbody>
-          {employees.map(employee => (
-            <tr key={employee._id} onClick={() => handleEmployeeClick(employee._id)}>
-              <td>{employee._id}</td>
-              <td>{employee.name}</td>
-              <td>{employee.email}</td>
-              <td>{employee.role}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="employee-card">
+      <div className="card-header">
+        <h3>Employee List</h3>
+        <button onClick={() => setIsCreating(true)} className="add-employee-btn">
+          <span className="plus-icon">+</span>
+        </button>
+      </div>
+      
+      <ul className="employee-list">
+        {employees.map(employee => (
+          <li className="employee-item" key={employee._id}>
+            <div className="employee-details">
+              <p className="employee-name">{employee.name}</p>
+              <p className="employee-role">{employee.role}</p>
+            </div>
+            <div className="employee-actions">
+              <span className="edit-icon" onClick={() => handleEmployeeClick(employee._id)}>✏️</span>
+              <span className="delete-icon" onClick={() => console.log('Delete employee', employee._id)}>🗑️</span>
+            </div>
+          </li>
+        ))}
+      </ul>
 
       {/* Create Employee Modal */}
       {isCreating && (

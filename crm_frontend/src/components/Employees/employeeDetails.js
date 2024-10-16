@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchEmployeeById, deleteEmployee, updateEmployee } from '../../utils/api'; // Import API functions
 import CreateEmployee from './Createemployee'; // Reuse CreateEmployee component for editing
-import './css/EmployeeDetails.css';
+  import './css/EmployeeDetails.css';
 
 const EmployeeDetails = () => {
   const { id } = useParams(); // Get employee ID from URL params

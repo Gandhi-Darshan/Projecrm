@@ -1,0 +1,168 @@
+/* Styling for the Employee Card */
+
+.employee-card {
+    width: calc(100% - 300px); /* Adjust width considering the sidebar (if it's 300px) */
+    max-width: 350px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed; /* Fixed position to the bottom left */
+    bottom: 200px; /* Distance from the bottom */
+    right: 40px;/* For sidebar avoidance */
+  }
+  
+  /* Card Header */
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .card-header h3 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .add-employee-btn {
+    background-color: #2ecc71;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .plus-icon {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  
+  /* Employee List Styles */
+  .employee-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px; /* Limit the height of the list */
+    overflow-y: auto; /* Add vertical scroll */
+  }
+  
+  .employee-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .employee-item:last-child {
+    border-bottom: none;
+  }
+  
+  .employee-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .employee-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .employee-role {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin: 0;
+  }
+  
+  /* Employee Action Icons */
+  .employee-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .edit-icon,
+  .delete-icon {
+    cursor: pointer;
+    font-size: 18px;
+    color: #2ecc71; /* Edit icon color */
+    transition: color 0.3s;
+  }
+  
+  .delete-icon {
+    color: #e74c3c; /* Delete icon color */
+  }
+  
+  .edit-icon:hover {
+    color: #27ae60;
+  }
+  
+  .delete-icon:hover {
+    color: #c0392b;
+  }
+  
+  /* Scroll bar custom styling */
+  .employee-list::-webkit-scrollbar {   
+    width: 6px;
+  }
+  
+  .employee-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .employee-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+  
+  .employee-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  @media (max-width: 1440px) {
+    .employee-card {
+     
+      right:30px;/* For sidebar avoidance */
+    }
+}
+@media (max-width: 1024px) {
+  .employee-card {
+    width: calc(100% - 300px); /* Adjust width considering the sidebar (if it's 300px) */
+    max-width: 250px;
+    background-color: white;
+    border-radius: 10px;
+    padding:15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed; /* Fixed position to the bottom left */
+    bottom: 148px; /* Distance from the bottom */
+    right: 30px;/* For sidebar avoidance */
+  }
+  .employee-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .employee-role {
+    font-size: 12px;
+    color: #7f8c8d;
+    margin: 0;
+  }
+  .card-header h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+}
