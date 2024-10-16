@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Routes,Route} from 'react-router-dom';
 import { AuthProvider } from './context/authContext';
 import Navbar from './components/Common/Navbar';
+import Sidebar from './components/Common/SIdebar';
 // import PrivateRoute from './components/Common/PrivateRoute';
-// import Dashboard from './components/Dashboard/Dashboard';
-import TasksList from './components/Task/Tasklist';
+ import Dashboard from './components/Dashboard/Dashboard';
 import TaskDetails from './components/Task//Taskdetails';
- import EmployeeList from './components/Employees/employeeList';
+
  import EmployeeDetails from './components/Employees/employeeDetails';
 // import CustomerList from './components/Customers/CustomerList';
 // import CreateCustomer from './components/Customers/CreateCustomer';
@@ -23,29 +23,20 @@ const App = () => {
   return (
     <AuthProvider>
       <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/tasks" element={<TasksList />} />
-          <Route path="/tasks/:id" element={<TaskDetails />} /> 
-          <Route path="/employees" element={<EmployeeList />} />
-          <Route path="/employees/:id" element={<EmployeeDetails />} /> {/* Task Details route */}
-          {/* 
-          <PrivateRoute path="/" element={<Dashboard />} />
-          <PrivateRoute path="/employees" element={<EmployeeList />} />
-          <PrivateRoute path="/employees/create" element={<CreateEmployee />} />
-          <PrivateRoute path="/employees/update/:employeeId" element={<UpdateEmployee />} />
-          <PrivateRoute path="/customers" element={<CustomerList />} />
-          <PrivateRoute path="/customers/create" element={<CreateCustomer />} />
-          <PrivateRoute path="/customers/update/:customerId" element={<UpdateCustomer />} />
-          <PrivateRoute path="/insurance" element={<InsuranceList />} />
-          <PrivateRoute path="/insurance/create" element={<CreateInsurance />} />
-          <PrivateRoute path="/followups" element={<FollowUpList />} />
-          <PrivateRoute path="/followups/create" element={<CreateFollowUp />} />
-          <PrivateRoute path="/reports" element={<ReportList />} />
-          <PrivateRoute path="/reports/generate" element={<GenerateReport />} />
-          */}
-        </Routes>
+      <div className="app">
+          <Navbar />
+          <div className="content-area">
+            <Sidebar />  {/* Include Sidebar */}
+            <div className="main-content"> {/* Container for the main content */}
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/tasks/:id" element={<TaskDetails />} />
+                <Route path="/employees/:id" element={<EmployeeDetails />} />
+              </Routes>
+            </div>
+          </div>
+        </div>
       </Router>
     </AuthProvider>
   );

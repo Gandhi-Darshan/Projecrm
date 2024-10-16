@@ -1,32 +1,78 @@
-/* Navbar.css */
 
-nav {
-    background-color: #007bff; /* Blue background */
-    padding: 10px; /* Padding for the navbar */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  }
-  
-  ul {
-    list-style: none; /* Remove default list styling */
-    display: flex; /* Use flexbox for horizontal layout */
-    justify-content: space-around; /* Space items evenly */
-    align-items: center; /* Center items vertically */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-  }
-  
-  li {
-    margin: 0 15px; /* Margin between links */
-  }
-  
-  a {
-    color: white; /* White text color */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold; /* Make text bold */
-    transition: color 0.3s; /* Smooth transition for hover effect */
-  }
-  
-  a:hover {
-    color: #ffd700; /* Change color on hover (gold) */
-  }
-  
+.navbar {
+  background-color: #FFFFFF;
+  height: 100px;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  /* Adds margin from the right of the screen */
+}
+
+/* Right-side container */
+.right-side {
+  display: flex;
+  align-items: center;
+}
+
+/* Button styles */
+.add-customer {
+  padding: 10px 15px;
+  background-color: #6ECF9D;
+  color: black;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  margin-right: 80px; /* Adds space between button and dropdown */
+}
+
+.add-customer:hover {
+  background-color: #1abc9c;
+}
+
+/* User Info dropdown */
+.user-info {
+  position: relative;
+  cursor: pointer;
+  color: black;
+  font-size: 18px;
+  margin-right: 70px;
+}
+
+.user-info span {
+  display: inline-block;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  color: #333;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 180px; /* Increased the width of the dropdown menu */
+  border-radius: 4px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  opacity: 0; /* Initially hidden */
+  transform: translateY(-10px); /* Starts above its original position */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth fade-in and slide-in effect */
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f4f4f4;
+}
+
+/* Dropdown visible state */
+.user-info.open .dropdown-menu {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Slides into place */
+}

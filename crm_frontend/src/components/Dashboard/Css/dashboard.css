@@ -1,0 +1,20 @@
+/* App.css or Dashboard.css */
+
+.dashboard {
+    margin-left: 220px; /* Adjust according to the sidebar width */
+    padding: 20px;
+    height: auto;
+    background-color: #f4f6f9; /* Light background color */
+   /* Allows scrolling if content exceeds height */
+  }
+  h2{
+    text-align: left;
+    
+  }
+
+  @media (max-width: 768px) {
+    .dashboard {
+      margin-left: 0; /* For smaller screens, remove margin */
+    }
+  }
+    
