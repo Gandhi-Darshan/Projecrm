@@ -2,7 +2,7 @@
 
 .employee-card {
     width: calc(100% - 300px); /* Adjust width considering the sidebar (if it's 300px) */
-    max-width: 400px;
+    max-width: 350px;
     background-color: white;
     border-radius: 10px;
     padding: 20px;
@@ -12,7 +12,7 @@
     margin-right: auto;
     position: fixed; /* Fixed position to the bottom left */
     bottom: 200px; /* Distance from the bottom */
-    right: 50px;/* For sidebar avoidance */
+    right: 40px;/* For sidebar avoidance */
   }
   
   /* Card Header */
@@ -128,4 +128,41 @@
   .employee-list::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+  @media (max-width: 1440px) {
+    .employee-card {
+     
+      right:30px;/* For sidebar avoidance */
+    }
+}
+@media (max-width: 1024px) {
+  .employee-card {
+    width: calc(100% - 300px); /* Adjust width considering the sidebar (if it's 300px) */
+    max-width: 250px;
+    background-color: white;
+    border-radius: 10px;
+    padding:15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed; /* Fixed position to the bottom left */
+    bottom: 148px; /* Distance from the bottom */
+    right: 30px;/* For sidebar avoidance */
+  }
+  .employee-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+  }
   
+  .employee-role {
+    font-size: 12px;
+    color: #7f8c8d;
+    margin: 0;
+  }
+  .card-header h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+}

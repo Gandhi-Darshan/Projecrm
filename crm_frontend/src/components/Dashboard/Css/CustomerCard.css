@@ -1,13 +1,13 @@
 .customer-card {
     width: 100%; /* Full width in the container */
     max-width: 600px; /* Max width for the card */
-    height: 250px;
+    height: 180px;
     background-color: white;
     border-radius: 10px;
     padding: 20px;
     position: fixed;
     left: 240px;
-    top: 140px;
+    top: 130px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
@@ -21,7 +21,7 @@
 }
 
 .customer-list-scroll {
-    max-height: 200px; /* Limit the height */
+    max-height: 140px; /* Limit the height */
     overflow-y: auto; /* Add vertical scroll */
     padding-right: 10px; /* Space for scroll bar */
 }
@@ -43,13 +43,6 @@
     font-size: 14px;
 }
 
-.customer-location {
-    color: #3498db;
-}
-
-.customer-appointment {
-    color: #2ecc71;
-}
 
 /* Style the scroll bar */
 .customer-list-scroll::-webkit-scrollbar {
@@ -72,11 +65,50 @@
 /* Responsive Styles */
 @media (max-width: 1440px) {
     .customer-card {
-        max-width: 90%; /* Ensure it doesn't exceed 90% */
+        width: 100%;
+        max-width: 600px; /* Ensure it doesn't exceed 90% */
+        height: 250px;
         margin: 0 auto; /* Center the card */
     }
 
     .customer-list-scroll {
-        max-height: 150px; /* Adjust height for smaller screens */
+        max-height: 200px; /* Adjust height for smaller screens */
+    }
+}
+
+@media (max-width: 1024px) {
+    .customer-card {
+        width: 100%;
+        left: 180px;
+        max-width: 350px; /* Ensure it doesn't exceed 90% */
+        height: 150px;
+        margin: 0 auto; /* Center the card */
+    }
+
+    .customer-list-scroll {
+        max-height: 100px; /* Adjust height for smaller screens */
+    }
+    .card-title {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: left;
+        margin-top: 3px;
+        margin-bottom: 15px;
+    }
+    .customer-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        padding: 8px;
+        border-bottom: 1px solid #eee; /* Divider between customers */
+    }
+    
+    .customer-name {
+        font-size: 15px;
+        font-weight: bold;
+    }
+    
+    .customer-info {
+        font-size: 12px;
     }
 }

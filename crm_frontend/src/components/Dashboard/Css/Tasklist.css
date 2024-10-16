@@ -196,3 +196,59 @@
 .Scroll::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+@media (max-width: 1024px) {
+  .task-list-container {
+    padding: 13px;
+    position: fixed;
+    left: 180px;
+    bottom: 15px;
+    /* width: 100%; */
+    width: 47%;
+    height: 340px; /* Fixed height for the entire container */
+    margin: auto;
+  }
+
+  .task-card {
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    padding: 13px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: all 0.3s;
+    height: 90px; /* Adjusted height for individual task cards */
+  }
+  .task-left,
+.task-middle,
+.task-right {
+  padding-left: 15px;
+}
+.task-name {
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.task-meta {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 10px; /* Added spacing */
+}
+.task-middle label {
+  font-weight: 400;
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 3px;
+  display: inline;
+}
+.task-right p {
+  margin: 8px 0 0 0;
+  font-size: 12px;
+  color: #555;
+}
+.Scroll {
+  max-height: 270px; /* Limit the height */
+  overflow-y: auto; /* Add vertical scroll */
+  padding-right: 10px; /* Space for scroll bar */
+}
+}

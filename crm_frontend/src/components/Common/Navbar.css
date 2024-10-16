@@ -20,6 +20,7 @@
   padding: 10px 15px;
   background-color: #6ECF9D;
   color: black;
+  font-size: medium;
   border: none;
   border-radius: 40px;
   cursor: pointer;
@@ -75,4 +76,31 @@
 .user-info.open .dropdown-menu {
   opacity: 1; /* Fully visible */
   transform: translateY(0); /* Slides into place */
+}
+@media (max-width: 1024px) {
+  .navbar {
+    height: 80px;
+  }
+
+  .add-customer {
+    padding: 8px 12px;
+    background-color: #6ECF9D;
+    color: black;
+    font-size: small;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    margin-right: 50px; /* Adds space between button and dropdown */
+  }
+
+  .user-info {
+    position: relative;
+    cursor: pointer;
+    color: black;
+    font-size: 15px;
+    margin-right: 50px;
+  }
+  .dropdown-menu {
+    width: 140px; /* Increased the width of the dropdown menu */
+  }
 }
