@@ -1,12 +1,1 @@
-To run this Backend code and start the server you need to follow somesteps
 
-Step1: Go to the node.js website the download the lastest version of node 
-https://nodejs.org/en
-
-Step2: Clone the repo and download the zip file of this project 
-
-Step3: Hit npm i or npm install  to install all dependecies in to your project
-
-Step4: In last hit npm run dev, now you are set and free to access all the api
-
-Note: Use the postman, thunderclient or any other API testing tool or API client.
