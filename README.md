@@ -1,6 +1,3 @@
-Here's a revised version of the README file that excludes any bash commands, Makefile references, or `.env` information:
-
----
 
 # **Health Sector CRM System**
 
@@ -47,7 +44,7 @@ Here’s a simple step-by-step guide for installing the Health Sector CRM System
 Start by cloning the repository from GitHub to your local machine. Navigate to the directory where you want to store the project and run:
 
 ```
-git clone <repository_url>
+git clone https://github.com/ArjavJP/Project.git
 ```
 
 ### **2. Install Dependencies**
