@@ -1,8 +1,8 @@
 const Customer = require('../models/Customer');
 
 const createCustomer = async (req, res) => {
-  const { name, age, gender, medical_history, contact_details, insurance_details, email_subscribed } = req.body;
-  const customer = new Customer({ name, age, gender, medical_history, contact_details, insurance_details, email_subscribed });
+  const { name, age, gender, email, medical_history, contact_details, insurance_details, email_subscribed } = req.body;
+  const customer = new Customer({ name, age, gender, email, medical_history, contact_details, insurance_details, email_subscribed });
 
   try {
     await customer.save();

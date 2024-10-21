@@ -6,33 +6,42 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Overlay color */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; /* Centers the modal vertically */
+  z-index: 1000; /* Ensure it's above other content */
 }
 
 .modal {
-  background-color: white; /* Modal background color */
-  border-radius: 8px;
+  background: #fff;
   padding: 20px;
-  max-width: 400px;
-  width: 100%; /* Responsive width */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 500px; /* Adjust as necessary */
+  width: 100%; /* Full width up to max-width */
+  position: relative; /* Required for z-index */
+  z-index: 1001; /* Higher than overlay to stay on top */
 }
+
+
 
 label {
   display: block; /* Block level for labels */
-  margin-bottom: 10px; /* Space below labels */
+  margin-right: 10px; /* Space below labels */
+  
+  
 }
 
-input, select {
-  width: 100%; /* Full width for inputs and selects */
-  padding: 10px;
-  margin-bottom: 20px; /* Space below inputs */
-  border: 1px solid #ddd; /* Border color */
-  border-radius: 4px; /* Rounded corners */
-}
+input[type="text"],
+  input[type="email"],
+  select {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
 
 button {
   margin-right: 10px; /* Space between buttons */

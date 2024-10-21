@@ -1,93 +1,121 @@
 /* Sidebar Container */
 .sidebar {
-    width: 200px;
-    height: 100vh;
-    background-color: #5D44F8;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 210px;
+  height: 100vh;
+  background-color: #5D44F8;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Hamburger Button */
+.hamburger {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 20px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  font-size: 24px; /* Size of the hamburger icon */
+  background: none; /* No background */
+  border: none; /* No border */
+  color: #5D44F8; /* Color to match the sidebar */
+  cursor: pointer; /* Pointer cursor */
+}
+
+/* Sidebar Header (Logo + Text Side by Side) */
+.sidebar-header {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  gap: 10px;
+}
+
+/* Logo Styles */
+.sidebar-logo {
+  width: 100px;
+  height: auto;
+}
+
+/* Sidebar Menu List */
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin-left: 50px;
+  width: 100%;
+}
+
+/* Sidebar Menu Items */
+.sidebar li {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Sidebar Links */
+.sidebar a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  display: block;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Full width */
+  border-top-right-radius: 0px; /* Rounded on the right side */
+  border-bottom-right-radius: 0px; /* Rounded on the right side */
+  border-top-left-radius: 40px; /* No radius on the left */
+  border-bottom-left-radius: 40px; /* No radius on the left */
+}
+
+.sidebar li a.active {
+  background-color: #ffffff; /* White background for the active link */
+  color: black; /* Darker text color to contrast the white background */
+  border-radius: 50px;
+  font-weight: bold; /* Optional: To make the active link stand out */
+  padding: 10px 15px; /* Add padding for better spacing */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover Effect */
+.sidebar a:hover {
+  background-color: rgb(255, 255, 255); /* White hover effect */
+  color: black;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 40px; /* Ensures no radius on the left during hover */
+  border-bottom-left-radius: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .sidebar {
+      width: 160px; /* Smaller width for smaller screens */
   }
-  
-  /* Sidebar Header (Logo + Text Side by Side) */
-  .sidebar-header {
-    display: flex;
-    height: 100px;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
-    gap: 10px;
-  }
-  
-  /* Logo Styles */
-  .sidebar-logo {
-    width: 100px;
-    height: auto;
-  }
-  
-  /* Team Jarvis Text */
-  .sidebar-title {
-    font-size: 18px;
-    color: #ecf0f1;
-    font-weight: bold;
-  }
-  
-  /* Sidebar Menu List */
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    margin-left: 50px;
-    width: 100%;
-  }
-  
-  /* Sidebar Menu Items */
-  .sidebar li {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* Sidebar Links */
+
   .sidebar a {
-    text-decoration: none;
-    color: white;
-    padding: 10px 20px;
-    display: block;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-    width: 100%; /* Full width */
-    border-top-right-radius: 00px; /* Rounded on the right side */
-    border-bottom-right-radius: 00px; /* Rounded on the right side */
-    border-top-left-radius: 40px; /* No radius on the left */
-    border-bottom-left-radius: 40px; /* No radius on the left */
+      font-size: 16px; /* Adjust font size */
   }
-  
-  /* Hover Effect (Sticks to right with only right-side rounded corners) */
-  .sidebar a:hover {
-    background-color: rgb(255, 255, 255); /* White hover effect */
-    color: black;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-top-left-radius: 40px; /* Ensures no radius on the left during hover */
-    border-bottom-left-radius: 40px;
+
+  .sidebar-logo {
+      width: 80px; /* Smaller logo */
   }
-  
-  /* Responsive Design */
-  @media (max-width: 1024px) {
-    .sidebar {
-      width: 160px;
-    }
-  
-    .sidebar a {
-      font-size: 16px;
-      
-    }
-  
-    .sidebar-logo {
-      width: 80px;
-    }
+
+  .hamburger {
+      display: block; /* Show hamburger icon on mobile */
   }
-  
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+      transform: translateX(-100%); /* Hide by default */
+      transition: transform 0.3s ease; /* Smooth transition */
+  }
+
+  .sidebar.open {
+      transform: translateX(0); /* Show when open */
+  }
+}

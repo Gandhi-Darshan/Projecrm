@@ -18,6 +18,7 @@ import TaskDetails from './components/Task//Taskdetails';
 // import ReportList from './components/Reports/ReportList';
 // import GenerateReport from './components/Reports/GenerateReport';
 import Login from './components/Auth/login';
+import CustomerList from './components/Customer/CustomerList';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/customers" element={<CustomerList />} />
                 <Route path="/tasks/:id" element={<TaskDetails />} />
                 <Route path="/employees/:id" element={<EmployeeDetails />} />
               </Routes>

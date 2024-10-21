@@ -1,3 +1,4 @@
+/* Styling for the Customer Card */
 .customer-card {
     width: 100%; /* Full width in the container */
     max-width: 600px; /* Max width for the card */
@@ -6,7 +7,7 @@
     border-radius: 10px;
     padding: 20px;
     position: fixed;
-    left: 240px;
+    left: 240px; /* Accounts for sidebar width */
     top: 130px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
@@ -43,7 +44,6 @@
     font-size: 14px;
 }
 
-
 /* Style the scroll bar */
 .customer-list-scroll::-webkit-scrollbar {
     width: 6px;
@@ -65,10 +65,11 @@
 /* Responsive Styles */
 @media (max-width: 1440px) {
     .customer-card {
-        width: 100%;
-        max-width: 600px; /* Ensure it doesn't exceed 90% */
+        width: calc(100% - 240px); /* Adjust based on sidebar width */
+        max-width: 600px; /* Ensure it doesn't exceed 600px */
         height: 250px;
-        margin: 0 auto; /* Center the card */
+        margin: 0 auto; /* Center the card horizontally */
+        left: 240px; /* Keeps card positioned relative to sidebar */
     }
 
     .customer-list-scroll {
@@ -78,37 +79,47 @@
 
 @media (max-width: 1024px) {
     .customer-card {
-        width: 100%;
-        left: 180px;
-        max-width: 350px; /* Ensure it doesn't exceed 90% */
-        height: 150px;
+        width: calc(100% - 180px); /* Adjust based on sidebar */
+        left: 180px; /* Adjust position */
+        max-width: 350px; /* Ensure it doesn't exceed 350px */
+        height: 150px; /* Adjust height */
         margin: 0 auto; /* Center the card */
     }
 
     .customer-list-scroll {
         max-height: 100px; /* Adjust height for smaller screens */
     }
+
     .card-title {
-        font-size: 20px;
-        font-weight: bold;
-        text-align: left;
+        font-size: 20px; /* Smaller title font size */
         margin-top: 3px;
         margin-bottom: 15px;
     }
+
     .customer-item {
-        display: flex;
-        justify-content: space-between;
         margin-bottom: 8px;
-        padding: 8px;
-        border-bottom: 1px solid #eee; /* Divider between customers */
+        padding: 8px; /* Reduced padding */
     }
-    
+
     .customer-name {
-        font-size: 15px;
-        font-weight: bold;
+        font-size: 15px; /* Smaller name font size */
     }
-    
+
     .customer-info {
-        font-size: 12px;
+        font-size: 12px; /* Smaller info font size */
+    }
+}
+
+@media (max-width: 768px) {
+    .customer-card {
+        width: calc(100% - 20px); /* Full width for mobile */
+        max-width: none; /* Remove max-width restriction */
+        left: 10px; /* Align closer to the edge */
+        height: auto; /* Let the height adjust automatically */
+        top: 100px; /* Adjust top positioning */
+    }
+
+    .customer-list-scroll {
+        max-height: 120px; /* Slightly larger height for better usability */
     }
 }

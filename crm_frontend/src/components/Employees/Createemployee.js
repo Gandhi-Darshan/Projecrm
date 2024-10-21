@@ -1,37 +1,74 @@
 import React, { useState, useEffect } from 'react';
-import { fetchEmployees } from '../../utils/api'; // Adjust based on your API functions
 import './css/CreateEmployee.css'; // Ensure you have a CSS file for styling
 
-const CreateEmployee = ({ onCreate, onEdit, employeeToEdit, onCancel, isOpen }) => {
+const CreateEmployee = ({ onCreate, employeeToEdit, onCancel, isOpen }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('');
 
   useEffect(() => {
     if (employeeToEdit) {
-      // Populate fields if editing an employee
       setName(employeeToEdit.name);
       setEmail(employeeToEdit.email);
       setRole(employeeToEdit.role);
+    } else {
+      setName('');
+      setEmail('');
+      setRole('');
     }
-  }, [employeeToEdit]); // Re-fetch data if employeeToEdit changes
+  }, [employeeToEdit]);
+
+  // Function to generate a random password
+  const generateRandomPassword = (length) => {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?';
+    let password = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      password += characters[randomIndex];
+    }
+    return password;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const employeeData = {
-      name,
-      email,
-      role,
-    };
+    let employeeData;
+
     if (employeeToEdit) {
-      await onEdit(employeeToEdit._id, employeeData); // Call onEdit if editing
+      // If editing, use the existing employee data and update only the name, email, and role
+      employeeData = {
+        ...employeeToEdit,
+        name,
+        email,
+        role,
+      };
     } else {
-      await onCreate(employeeData); // Call onCreate if creating
+      // If creating, generate a new password
+      const generatedPassword = generateRandomPassword(8);
+      employeeData = {
+        name,
+        email,
+        role,
+        password: generatedPassword,
+        admin_id: '66fdb0b565783eb6f3a321a9',
+      };
+
+      // Show alert with generated password
+      alert(`Employee created successfully with password: ${generatedPassword}`);
     }
-    // Reset form fields
-    setName('');
-    setEmail('');
-    setRole('');
+
+    try {
+      await onCreate(employeeData); // Send data to the API
+      if (employeeToEdit) {
+        alert('Employee updated successfully!'); // Show update success alert
+      }
+      // Reset form fields
+      setName('');
+      setEmail('');
+      setRole('');
+    } catch (error) {
+      console.error("Error creating/updating employee:", error);
+      alert("Error creating/updating employee."); // Show error alert
+    }
   };
 
   return (

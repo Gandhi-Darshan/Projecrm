@@ -1,4 +1,4 @@
-const API_URL = "https://healthcare-crm.onrender.com/api"; // Adjust to your API URL
+const API_URL = "http://localhost:5000/api"; // Adjust to your API URL
 
 //Task API
 export const fetchTasks = async () => {
@@ -48,6 +48,7 @@ export const fetchCustomers = async () => {
   const response = await fetch(`${API_URL}/customers`);
   return await response.json();
 };
+
 
 //Employee API
 // Fetch all employees
@@ -105,6 +106,15 @@ export const deleteEmployee = async (id) => {
   });
   if (!response.ok) {
     throw new Error("Failed to delete employee");
+  }
+  return await response.json();
+};
+//  followUps Api
+//Get Followups
+export const fetchAutomated = async () => {
+  const response = await fetch(`${API_URL}/Followups`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch follow-ups");
   }
   return await response.json();
 };
