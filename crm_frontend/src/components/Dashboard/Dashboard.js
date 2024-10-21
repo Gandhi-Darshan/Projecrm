@@ -11,9 +11,10 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <CustomerCard />
-      <AutomatedMail/>
+      <AutomatedMail/>      
       <LatestTask />
       <EmployeeList />
+ 
     </div>
   );
 };
