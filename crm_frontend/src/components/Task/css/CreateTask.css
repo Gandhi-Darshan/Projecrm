@@ -1,5 +1,5 @@
 .modal-overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -12,20 +12,33 @@
   }
   
   .modal {
+    top: 60px;
+    left: 20px;
     background-color: #fff;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    width: 400px; /* Set the width as per your design */
   }
   
   h3 {
     margin: 0 0 15px;
     text-align: center;
   }
-  
+  textarea{
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  input[type="date"]{
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
   input[type="text"],
-  input[type="date"],
   select {
     width: 80%;
     padding: 10px;
