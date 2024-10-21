@@ -1,20 +1,28 @@
 /* App.css or Dashboard.css */
-
 .dashboard {
-    margin-left: 220px; /* Adjust according to the sidebar width */
-    padding: 20px;
-    height: auto;
-    background-color: #f4f6f9; /* Light background color */
-   /* Allows scrolling if content exceeds height */
-  }
-  h2{
-    text-align: left;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align components */
+  padding: 20px; /* Add some padding */
+  position: relative; /* Ensure relative positioning */
+  overflow: visible; /* Ensure it does not overflow */
+}
+
+h2 {
+  text-align: left; /* Align heading text to the left */
+  width: 100%; /* Ensure it takes full width */
+  margin-bottom: 20px; /* Add some margin below the heading for spacing */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .dashboard {
+    margin-left: 0; /* For smaller screens, remove margin */
+    padding: 10px; /* Reduce padding on smaller screens */
   }
 
-  @media (max-width: 768px) {
-    .dashboard {
-      margin-left: 0; /* For smaller screens, remove margin */
-    }
+  h2 {
+    font-size: 20px; /* Smaller font size for the heading on mobile */
+    margin-bottom: 15px; /* Adjust margin for mobile */
   }
-    
+}

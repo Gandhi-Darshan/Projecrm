@@ -1,18 +1,37 @@
-
+/* Navbar container */
 .navbar {
   background-color: #FFFFFF;
   height: 100px;
-  padding: 10px;
+  padding: 10px 20px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between; /* Ensure title and right-side are spaced */
   align-items: center;
-  /* Adds margin from the right of the screen */
+  position: fixed; /* Fixed position to stay on top */
+  width: calc(100% - 250px); /* Adjust based on the width of the sidebar */
+  left: 210px; /* Sidebar width */
+  top: 0;
+  z-index: 1000; /* Ensure it stays above other elements */
+}
+
+/* Left-side container for the page title */
+.left-side {
+  display: flex;
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 50px;
+  color: black;
 }
 
 /* Right-side container */
 .right-side {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 }
 
 /* Button styles */
@@ -24,7 +43,7 @@
   border: none;
   border-radius: 40px;
   cursor: pointer;
-  margin-right: 80px; /* Adds space between button and dropdown */
+  margin-right: 80px;
 }
 
 .add-customer:hover {
@@ -44,7 +63,6 @@
   display: inline-block;
 }
 
-/* Dropdown Menu */
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -54,13 +72,13 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 180px; /* Increased the width of the dropdown menu */
+  width: 180px;
   border-radius: 4px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  opacity: 0; /* Initially hidden */
-  transform: translateY(-10px); /* Starts above its original position */
-  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth fade-in and slide-in effect */
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .dropdown-menu li {
@@ -72,35 +90,34 @@
   background-color: #f4f4f4;
 }
 
-/* Dropdown visible state */
 .user-info.open .dropdown-menu {
-  opacity: 1; /* Fully visible */
-  transform: translateY(0); /* Slides into place */
+  opacity: 1;
+  transform: translateY(0);
 }
+
 @media (max-width: 1024px) {
   .navbar {
     height: 80px;
+    width: calc(100% - 200px); /* Adjusted for a potentially smaller sidebar */
+    left: 160px; /* Adjusted for smaller screen sidebar width */
+  }
+
+  .page-title {
+    font-size: 18px;
+    margin-left:30px ;
   }
 
   .add-customer {
     padding: 8px 12px;
-    background-color: #6ECF9D;
-    color: black;
-    font-size: small;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    margin-right: 50px; /* Adds space between button and dropdown */
+    margin-right: 50px;
   }
 
   .user-info {
-    position: relative;
-    cursor: pointer;
-    color: black;
     font-size: 15px;
     margin-right: 50px;
   }
+
   .dropdown-menu {
-    width: 140px; /* Increased the width of the dropdown menu */
+    width: 140px;
   }
 }

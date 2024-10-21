@@ -5,17 +5,15 @@ import EmployeeList from './NewEmpoyee';
 // import UpcomingMeetings from './UpcomingMeetings';
 // import NewTask from './NewTask';
 import './Css/dashboard.css'; // Styles for Dashboard
+import AutomatedMail from './AutomatedMail';
 
 const Dashboard = () => {
   return (
     <div className="dashboard">
-      {/* <LatestTask />
-     
-      {/* <UpcomingMeetings />
-      <NewTask /> */} 
       <CustomerCard />
-      <EmployeeList/>
-      <LatestTask/>
+      <AutomatedMail/>
+      <LatestTask />
+      <EmployeeList />
     </div>
   );
 };

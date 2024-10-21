@@ -6,11 +6,13 @@
   position: fixed;
   left: 240px;
   bottom: 15px;
-  /* width: 100%; */
   width: 50%;
-  height: 390px; /* Fixed height for the entire container */
+  max-width: 900px; /* Added max-width for larger screens */
+  height: 390px;
   margin: auto;
+  overflow: hidden; /* Hide overflow to manage scroll */
 }
+
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -22,8 +24,9 @@
   font-size: 20px;
   font-weight: bold;
 }
+
 .Scroll {
-  max-height: 300px; /* Limit the height */
+  max-height: 320px; /* Limit the height */
   overflow-y: auto; /* Add vertical scroll */
   padding-right: 10px; /* Space for scroll bar */
 }
@@ -45,6 +48,7 @@
   font-size: 20px;
   line-height: 30px;
 }
+
 .task-cards {
   display: flex;
   flex-direction: column;
@@ -59,7 +63,7 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   transition: all 0.3s;
-  height: 120px; /* Adjusted height for individual task cards */
+  height: 120px;
 }
 
 .task-card:hover {
@@ -111,7 +115,6 @@
   display: inline;
 }
 
-/* Status and Priority Side by Side */
 .task-middle .status-container,
 .task-middle .priority-container {
   display: flex;
@@ -128,14 +131,12 @@
 
 .status-container .status,
 .priority-container .priority {
-  padding: 4px 8px; /* Reduced padding for a smaller badge */
+  padding: 4px 8px;
   border-radius: 12px;
   font-size: 12px;
   font-weight: bold;
-  margin-bottom: 0; /* Remove unnecessary space */
 }
 
-/* Status and Priority Background Styling */
 .status.active {
   background-color: #e3fcef;
   color: #34a853;
@@ -179,7 +180,7 @@
   font-size: 14px;
   color: #555;
 }
-/* Style the scroll bar */
+
 .Scroll::-webkit-scrollbar {
   width: 6px;
 }
@@ -196,59 +197,98 @@
 .Scroll::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* Responsive Styles */
 @media (max-width: 1024px) {
   .task-list-container {
     padding: 13px;
-    position: fixed;
     left: 180px;
-    bottom: 15px;
-    /* width: 100%; */
     width: 47%;
-    height: 340px; /* Fixed height for the entire container */
-    margin: auto;
+    height: 340px;
   }
 
   .task-card {
-    display: flex;
-    background-color: white;
-    border-radius: 10px;
     padding: 13px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    cursor: pointer;
-    transition: all 0.3s;
-    height: 90px; /* Adjusted height for individual task cards */
+    height: 90px;
   }
+
   .task-left,
-.task-middle,
-.task-right {
-  padding-left: 15px;
-}
-.task-name {
-  font-size: 13px;
-  font-weight: 400;
-  margin-bottom: 5px;
+  .task-middle,
+  .task-right {
+    padding-left: 15px;
+  }
+
+  .task-name {
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+
+  .task-meta {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .task-middle label {
+    font-weight: 400;
+    font-size: 12px;
+    margin-bottom: 3px;
+  }
+
+  .task-right p {
+    font-size: 12px;
+  }
+
+  .Scroll {
+    max-height: 270px;
+  }
 }
 
-.task-meta {
-  font-size: 12px;
-  color: #777;
-  margin-bottom: 10px; /* Added spacing */
+@media (max-width: 768px) {
+  .task-list-container {
+    left: 10px; /* Adjust for smaller screens */
+    width: 90%; /* Increase width for smaller screens */
+    height: auto; /* Allow height to adjust based on content */
+  }
+
+  .task-card {
+    flex-direction: column; /* Stack items in card */
+    height: auto; /* Allow height to adjust based on content */
+  }
+
+  .task-left,
+  .task-middle,
+  .task-right {
+    padding-left: 10px; /* Reduce padding */
+  }
+
+  .task-name {
+    font-size: 14px; /* Increase font size for readability */
+  }
+
+  .task-meta,
+  .task-middle label,
+  .task-right p {
+    font-size: 12px; /* Smaller font sizes for better fit */
+  }
 }
-.task-middle label {
-  font-weight: 400;
-  font-size: 12px;
-  color: #333;
-  margin-bottom: 3px;
-  display: inline;
-}
-.task-right p {
-  margin: 8px 0 0 0;
-  font-size: 12px;
-  color: #555;
-}
-.Scroll {
-  max-height: 270px; /* Limit the height */
-  overflow-y: auto; /* Add vertical scroll */
-  padding-right: 10px; /* Space for scroll bar */
-}
+
+@media (max-width: 480px) {
+  .task-list-container {
+    padding: 10px; /* Less padding */
+    bottom: 10px; /* Adjust bottom positioning */
+  }
+
+  .add-task-btn {
+    width: 40px; /* Increase size for touch targets */
+    height: 40px;
+  }
+
+  .plus-icon {
+    font-size: 24px; /* Increase icon size */
+  }
+
+  .task-name {
+    font-size: 12px; /* Smaller font size */
+  }
 }

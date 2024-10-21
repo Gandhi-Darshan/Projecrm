@@ -7,9 +7,7 @@ const errorHandler = require("./middlewares/errorMiddleware");
 // Route imports
 const customerRoutes = require("./routes/customerRoutes");
 const taskRoutes = require("./routes/taskRoutes");
-// const followUpRoutes = require('./routes/followUpRoutes');
-// const reportRoutes = require('./routes/reportRoutes');
-// const equipmentRoutes = require('./routes/equipmentRoutes');
+const followUpRoutes = require('./routes/followupRoutes');
 const employeeRoutes = require("./routes/employeeRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const insuranceRoutes = require("./routes/insuranceRoutes");
@@ -32,12 +30,11 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
 
+  require('./Jobs/followUpcron');
 // Routes
 app.use("/api/customers", customerRoutes);
 app.use("/api/tasks", taskRoutes);
-// app.use('/api/followups', followUpRoutes);
-// app.use('/api/reports', reportRoutes);
-// app.use('/api/equipments', equipmentRoutes);
+app.use('/api/followups', followUpRoutes);
 app.use("/api/insurances", insuranceRoutes);
 app.use("/api/employees", employeeRoutes);
 app.use("/api/admins", adminRoutes);

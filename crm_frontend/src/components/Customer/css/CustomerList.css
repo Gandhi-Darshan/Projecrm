@@ -1,0 +1,235 @@
+/* Main Content */
+.main-content {
+    background-color: #ecf0f1;
+    padding: 20px;
+    margin-top: 7%;
+    margin-left: 200px; /* Adjusts based on sidebar width */
+    width: calc(100% - 200px); /* Accounts for sidebar width */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  @media (max-width: 1200px) {
+    .main-content {
+      margin-left: 200px; /* Keep margin for sidebar */
+      width: calc(100% - 200px); /* Adjust for smaller screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .main-content {
+      margin-left: 200px; /* Sidebar fixed, content remains aligned */
+      width: calc(100% - 200px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .main-content {
+      margin-left: 200px; /* Sidebar fixed, width stays responsive */
+      width: calc(100% - 200px);
+    }
+  }
+  
+  /* New Customer Button */
+  .new-customer-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .new-customer-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Table Container */
+  .table-container {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto; /* Table scrolls horizontally on small screens */
+  }
+  
+  /* Table */
+  .customer-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+  }
+  
+  .customer-table th, .customer-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .customer-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .customer-table tbody tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  /* Responsive Table Adjustments */
+  @media (max-width: 1024px) {
+    .customer-table th, .customer-table td {
+      padding: 10px;
+    }
+  
+    .customer-table {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .customer-table th, .customer-table td {
+      padding: 8px;
+    }
+  
+    .customer-table {
+      font-size: 0.85rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .customer-table th, .customer-table td {
+      padding: 6px;
+    }
+  
+    .customer-table {
+      font-size: 0.8rem;
+    }
+  }
+  
+  /* Action Buttons */
+  .action-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-right: 5px;
+    font-size: 0.9rem;
+  }
+  
+  .action-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .view-btn {
+    background-color: #2ecc71;
+  }
+  
+  .view-btn:hover {
+    background-color: #27ae60;
+  }
+  
+  .edit-btn {
+    background-color: #f39c12;
+  }
+  
+  .edit-btn:hover {
+    background-color: #e67e22;
+  }
+  
+  .delete-btn {
+    background-color: #e74c3c;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Stack pagination buttons on small screens */
+  }
+  
+  .pagination span {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .pagination-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  .pagination-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Media Queries for Small Screens */
+  @media (max-width: 1024px) {
+    .customer-table th, .customer-table td {
+      padding: 10px;
+    }
+  
+    .customer-table {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .customer-table th, .customer-table td {
+      padding: 8px;
+    }
+  
+    .customer-table {
+      font-size: 0.85rem;
+    }
+  
+    .new-customer-btn {
+      width: 100%;
+      font-size: 0.9rem;
+    }
+  
+    .pagination {
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .customer-table th, .customer-table td {
+      padding: 6px;
+    }
+  
+    .customer-table {
+      font-size: 0.8rem;
+    }
+  
+    .new-customer-btn {
+      font-size: 0.8rem;
+    }
+  
+    .action-btn {
+      padding: 4px 8px;
+      font-size: 0.8rem;
+    }
+  
+    .pagination-btn {
+      padding: 4px 8px;
+      font-size: 0.8rem;
+    }
+  }
+  

@@ -1,0 +1,147 @@
+/* Automated Mail Container */
+.automated-mail-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 200px;
+    max-width: 500px;
+    position: fixed;
+    top: 130px;
+    right: 40px;
+    z-index: 1000;
+    overflow-y: auto;
+    /* scrollbar-width: thin; */
+    /* scrollbar-color:  #f0f0f0; */
+  }
+  
+  /* Custom Scrollbar for Webkit-based Browsers */
+  .automated-mail-container::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .automated-mail-container::-webkit-scrollbar-thumb {
+    background-color: grey;
+    border-radius: 10px;
+  }
+  
+  .automated-mail-container::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+  }
+  
+  /* Header section styling */
+  .automated-mail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .automated-mail-header h2{
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 5px;
+    margin-bottom: 20px; 
+  }
+  
+  /* "+" button styling */
+  .add-button {
+    background-color: #32c67b;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Process list and individual items */
+  .process-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .process-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  /* Process logo and details */
+  .process-details {
+    display: flex;
+    align-items: center;
+  }
+  
+  .process-logo {
+    background-image: url('https://via.placeholder.com/40');
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .process-info h3 {
+    margin: 0;
+    font-size: 15px;
+    color: #333;
+  }
+  
+  .process-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #999;
+  }
+  
+  /* Process metadata */
+  .process-meta {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #333;
+  }
+  
+  .meta-item {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+  
+  .meta-item i {
+    margin-right: 5px;
+  }
+  
+  .meta-item span {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .calendar-icon, .time-icon, .duration-icon {
+    background-color: #32c67b;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  
+  .calendar-icon {
+    background-image: url('https://via.placeholder.com/20');
+  }
+  
+  .time-icon {
+    background-image: url('https://via.placeholder.com/20');
+  }
+  
+  .duration-icon {
+    background-image: url('https://via.placeholder.com/20');
+  }
+  
