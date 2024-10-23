@@ -1,4 +1,4 @@
-const FollowUp = require('../models/FollowUp');
+const FollowUp = require('../models/Followup');
 
 // Create a follow-up
 const createFollowUp = async (req, res) => {
