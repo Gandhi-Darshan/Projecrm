@@ -1,5 +1,5 @@
 const cron = require('node-cron');
-const FollowUp = require('../models/FollowUp');
+const FollowUp = require('../models/Followup');
 const Task = require('../models/Task');  // Assuming you have a Task model
 const sendEmail = require('../utils/emailService');
 
