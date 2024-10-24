@@ -104,15 +104,15 @@
   /* Process metadata */
   .process-meta {
     display: flex;
-    align-items: center;
-    font-size: 12px;
-    color: #333;
+    justify-content: space-between; /* Spread date and duration */
+    align-items: center; /* Vertically center icons and text */
+    gap: 20px; 
   }
   
   .meta-item {
     display: flex;
-    align-items: center;
-    margin-left: 10px;
+  align-items: center;
+  gap: 8px; 
   }
   
   .meta-item i {
@@ -123,6 +123,19 @@
     font-size: 14px;
     color: #333;
   }
+  .duration-text {
+    display: inline-block;
+    min-width: 100px; /* Set a fixed minimum width for consistent alignment */
+    text-align: left; /* Align text to the left */
+  }
+  .all-followup li{
+    list-style-type: none;
+}
+.all-followup a{
+    text-decoration: none;
+    color:blue;
+    
+}
   
   .calendar-icon, .time-icon, .duration-icon {
     background-color: #32c67b;

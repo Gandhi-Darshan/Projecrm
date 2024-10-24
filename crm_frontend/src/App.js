@@ -8,12 +8,11 @@ import Sidebar from './components/Common/SIdebar';
 import TaskDetails from './components/Task//Taskdetails';
 
  import EmployeeDetails from './components/Employees/employeeDetails';
-// import CustomerList from './components/Customers/CustomerList';
 // import CreateCustomer from './components/Customers/CreateCustomer';
 // import UpdateCustomer from './components/Customers/UpdateCustomer';
 // import InsuranceList from './components/Insurance/InsuranceList';
 // import CreateInsurance from './components/Insurance/CreateInsurance';
-// import FollowUpList from './components/FollowUps/FollowUpList';
+ import FollowUpList from './components/FollowUps/ListFollowup';
 // import CreateFollowUp from './components/FollowUps/CreateFollowUp';
 // import ReportList from './components/Reports/ReportList';
 // import GenerateReport from './components/Reports/GenerateReport';
@@ -34,7 +33,8 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/customers" element={<CustomerList />} />
                 <Route path="/tasks/:id" element={<TaskDetails />} />
-                <Route path="/employees/:id" element={<EmployeeDetails />} />
+                <Route path="/employees/:id" element={<EmployeeDetails />} />\
+                <Route path="/followups" element={<FollowUpList />} />
               </Routes>
             </div>
           </div>

@@ -1,0 +1,108 @@
+.followup-card-list-container {
+    padding: 20px;
+    background-color: #fafafa;
+    width: 100%;
+    max-width: 1200px; /* Set a max width for the container */
+    margin: 10px auto; /* Center the container */
+}
+
+.followup-card-list-header {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/* Card container */
+.followup-cards-container {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    gap: 16px; /* Space between cards */
+}
+
+/* Individual follow-up card */
+.followup-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    max-width: 100%; /* Ensure cards take full available width */
+}
+
+.followup-card:hover {
+    transform: scale(1.02);
+}
+
+/* Content within the card */
+.followup-card-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+}
+
+.followup-card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.followup-label {
+    font-weight: bold;
+    color: #555;
+}
+
+.followup-value {
+    color: #777;
+}
+.add-followups{
+    padding: 10px 15px;
+    background-color: skyblue;
+    color: white;
+    font-size: medium;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    margin-right: 80px;
+    display: inline-flex;
+    align-items: center;
+}
+.followup-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Adjust based on your layout */
+  }
+/* Card actions (buttons) */
+.followup-card-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.followup-card-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    margin-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    color: white;
+}
+
+.followup-edit-btn {
+    background-color: #28a745;
+}
+
+.followup-delete-btn {
+    background-color: #dc3545;
+}
+
+.followup-edit-btn:hover {
+    background-color: #218838;
+}
+
+.followup-delete-btn:hover {
+    background-color: #c82333;
+}
