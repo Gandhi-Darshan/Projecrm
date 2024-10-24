@@ -1,5 +1,6 @@
 // CustomerCard.js
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { fetchCustomers } from '../../utils/api'; // Ensure this is the correct import path
 import './Css/CustomerCard.css';
 
@@ -47,7 +48,9 @@ const CustomerCard = () => {
             </div>
           ))
         ) : (
-          <div>No customers for today.</div> // Message if no customers found
+          <div className="all-customer">No customers for today.
+          <li><a><Link to="/customers" >View all customer</Link></a></li>
+          </div> // Message if no customers found
         )}
       </div>
     </div>

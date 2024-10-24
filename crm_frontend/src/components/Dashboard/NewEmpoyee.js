@@ -55,10 +55,10 @@ const EmployeeList = () => {
       try {
         await deleteEmployee(employeeId);
         await fetchAndSetEmployees();
-        setMessage('Employee deleted successfully!');
+        window.confirm('Employee deleted successfully!');
       } catch (error) {
         console.error("Error deleting employee:", error);
-        setMessage('Error deleting employee.');
+        window.confirm('Error deleting employee.');
       }
     }
   };

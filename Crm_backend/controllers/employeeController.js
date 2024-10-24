@@ -34,6 +34,9 @@ const updateEmployee = async (req, res) => {
   const { id } = req.params;
   try {
     const employee = await Employee.findByIdAndUpdate(id, req.body, { new: true });
+    if (!employee) {
+      return res.status(404).json({ message: "Employee not found" });
+    }
     res.status(200).json(employee);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -46,7 +49,6 @@ const deleteEmployee = async (req, res) => {
   try {
     // Check for pending tasks associated with the employee
     const pendingTasks = await Task.find({ assignedTo: id, status: 'pending' });
-
     if (pendingTasks.length > 0) {
       return res.status(400).json({ message: 'Cannot delete employee with pending tasks.' });
     }

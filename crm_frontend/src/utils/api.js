@@ -109,14 +109,57 @@ export const deleteEmployee = async (id) => {
   }
   return await response.json();
 };
+
+
 //  followUps Api
 //Get Followups
 export const fetchAutomated = async () => {
-  const response = await fetch(`${API_URL}/Followups`);
+  const response = await fetch(`${API_URL}/followups`);
   if (!response.ok) {
     throw new Error("Failed to fetch follow-ups");
   }
   return await response.json();
 };
+//create FollowUps
+export const createFollowup = async (followupdata) => {
+    const response = await fetch(`${API_URL}/followups`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(followupdata),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to create FollowUps");
+    }
+    return await response.json();   
+
+};
+//update FollowUps
+export const updateFollowup = async (id, followupdata) => {
+  const response = await fetch(`${API_URL}/followups/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(followupdata),
+  });
+  if (!response.ok) {
+    throw new Error("Failed to update employee");
+  }
+  return await response.json();
+};
+//Delete FollowUps
+
+export const deleteFollowups = async (id) => {
+  const response = await fetch(`${API_URL}/followups/${id}`, {
+    method: "DELETE",
+  });
+  if (!response.ok) {
+    throw new Error("Failed to delete Follow Ups");
+  }
+  return await response.json();
+};
+
 
 // Similar functions for fetchCustomers, createCustomer, updateCustomer, deleteCustomer, etc.

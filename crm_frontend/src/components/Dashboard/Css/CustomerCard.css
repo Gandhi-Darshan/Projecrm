@@ -61,7 +61,14 @@
 .customer-list-scroll::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
-
+.all-customer li{
+    list-style-type: none;
+}
+.all-customer a{
+    text-decoration: none;
+    color:blue;
+    
+}
 /* Responsive Styles */
 @media (max-width: 1440px) {
     .customer-card {
