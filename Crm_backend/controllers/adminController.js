@@ -35,7 +35,7 @@ const deleteAdmin = async (req, res) => {
   const { id } = req.params;
   try {
     await Admin.findByIdAndDelete(id);
-    res.status(204).json({ message: 'Admin deleted' });
+    res.status(200).json({ message: 'Admin deleted' });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

@@ -32,9 +32,6 @@ const Sidebar = () => {
           <li>
             <Link to="/followups" className={location.pathname === '/followups' ? 'active' : ''}>Follow-Ups</Link>
           </li>
-          <li>
-            <Link to="/reports" className={location.pathname === '/reports' ? 'active' : ''}>Reports</Link>
-          </li>
         </ul>
       </aside>
     </>

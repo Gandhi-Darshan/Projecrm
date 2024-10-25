@@ -72,6 +72,8 @@ const deleteInsuranceDetails = async (req, res) => {
   }
 };
 
+
+
 module.exports = {
   createInsurance,
   getAllInsuranceDetails,

@@ -39,7 +39,7 @@ const deleteFollowUp = async (req, res) => {
   const { id } = req.params;
   try {
     await FollowUp.findByIdAndDelete(id);
-    res.status(204).json({ message: 'Follow-Up deleted' });
+    res.status(200).json({ message: 'Follow-Up deleted' });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

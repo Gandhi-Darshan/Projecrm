@@ -5,7 +5,7 @@ const followUpSchema = new mongoose.Schema({
   customer_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer' },
   email_type: { type: String, required: true },
   trigger_date: { type: Date, required: true },
-  status: { type: String, enum: ['pending', 'sent'], default: 'pending' }
+  status: { type: String, enum: ['due', 'sent'], default: 'due' }
 }, { timestamps: true });
 
 module.exports = mongoose.model('FollowUp', followUpSchema);

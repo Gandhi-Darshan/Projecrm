@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(email, password);
-      navigate('/dashboard'); // Redirect after login
+      navigate('/'); // Redirect after login
     } catch (err) {
       setError('Login failed. Please check your credentials.');
     }

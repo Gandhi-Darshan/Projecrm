@@ -23,7 +23,7 @@ const getCustomers = async (req, res) => {
 const getCustomersByid = async (req, res) => {
   const { id } = req.params;
   try {
-    const customers = await Customer.findById(id, req.body);
+    const customers = await Customer.findById(id, req.body).populate('insurance_details');
     res.status(200).json(customers);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -43,7 +43,7 @@ const deleteCustomer = async (req, res) => {
   const { id } = req.params;
   try {
     await Customer.findByIdAndDelete(id);
-    res.status(204).json({ message: 'Customer deleted' });
+    res.status(200).json({ message: 'Customer deleted' });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
