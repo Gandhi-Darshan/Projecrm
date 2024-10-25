@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { deleteFollowups, fetchAutomated, createFollowup } from "../../utils/api";
-import { useNavigate } from "react-router-dom";
+import {
+  deleteFollowups,
+  fetchAutomated,
+  createFollowup,
+  updateFollowup,
+} from "../../utils/api"; // Adjust based on your API functions
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import CreateFollowUp from "./CretaeFollowup";
-import './Css/ListFollow.css';
+import CreateFollowUp from "./CretaeFollowup"; // Ensure you have this component correctly named
+import "./Css/ListFollow.css";
 
 const FollowupList = () => {
-  const navigate = useNavigate();
-  const [FollowUp, setFollowUp] = useState([]);
+  const [followUpList, setFollowUpList] = useState([]);
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [followUpToEdit, setFollowUpToEdit] = useState(null);
+  const [currentFollowUp, setCurrentFollowUp] = useState(null);
+  const [message, setMessage] = useState("");
 
+  // Calculate the time duration from the current date to the follow-up trigger date
   const calculateDuration = (triggerDate) => {
     const now = new Date();
     const triggeredDate = new Date(triggerDate);
@@ -23,136 +28,172 @@ const FollowupList = () => {
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
 
-    let durationMessage = "";
-    if (days > 0) {
-      durationMessage = `${days} day${days > 1 ? "s" : ""}`;
-    } else if (hours > 0) {
-      durationMessage = `${hours} hour${hours > 1 ? "s" : ""}`;
-    } else if (minutes > 0) {
-      durationMessage = `${minutes} minute${minutes > 1 ? "s" : ""}`;
-    } else {
-      durationMessage = `${seconds} second${seconds > 1 ? "s" : ""}`;
-    }
-
-    return isFuture ? `In ${durationMessage}` : `${durationMessage} ago`;
+    if (days > 0) return `${days} day${days > 1 ? "s" : ""}`;
+    if (hours > 0) return `${hours} hour${hours > 1 ? "s" : ""}`;
+    if (minutes > 0) return `${minutes} minute${minutes > 1 ? "s" : ""}`;
+    return `${seconds} second${seconds > 1 ? "s" : ""}`;
   };
 
+  // Fetch follow-up data from API
+  const fetchFollowups = async () => {
+    try {
+      const data = await fetchAutomated();
+      const formattedData = data.map((followUp) => ({
+        id: followUp._id,
+        emailType: followUp.email_type,
+        customer_id: followUp.customer_id,
+        name: followUp.customer_id
+          ? followUp.customer_id.name
+          : followUp.employee_id.name,
+        trigger_date: followUp.trigger_date,
+        status: followUp.status,
+        duration: calculateDuration(followUp.trigger_date),
+      }));
+      setFollowUpList(formattedData);
+    } catch (error) {
+      console.error("Error fetching follow-ups:", error);
+    }
+  };
+
+  // Fetch follow-ups when component is mounted
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchAutomated();
-        const formattedData = data.map((followUp) => ({
-          id: followUp._id,
-          emailType: followUp.email_type,
-          customer_id: followUp.customer_id,
-          name: followUp.customer_id
-            ? followUp.customer_id.name
-            : followUp.employee_id.name,
-          trigger_date: followUp.trigger_date,
-          status: followUp.status,
-          duration: calculateDuration(followUp.trigger_date),
-        }));
-        setFollowUp(formattedData);
-      } catch (error) {
-        console.error("Error fetching automated email processes:", error);
-      }
-    };
-    fetchData();
+    fetchFollowups();
   }, []);
 
-  const handleCreateClick = async (newFollowUp) => {
-    await CreateFollowUp(newFollowUp); // Call your API to create a new task
-    setIsCreating(false); // Close modal
-    const data = await fetchAutomated();
-    const formattedData = data.map((followUp) => ({
-      id: followUp._id,
-      emailType: followUp.email_type,
-      customer_id: followUp.customer_id,
-      name: followUp.customer_id
-        ? followUp.customer_id.name
-        : followUp.employee_id.name,
-      trigger_date: followUp.trigger_date,
-      status: followUp.status,
-      duration: calculateDuration(followUp.trigger_date),
-    }));
-    setFollowUp(formattedData);
-  };
-
-  // const handleEditClick = (followup) => {
-  //   setFollowUpToEdit(followup);
-  //   setIsEditing(true);
-  // };
-
-  const handleDelete = async (followupId) => {
-    const confirmDelete = window.confirm('Are you sure you want to delete this Follow Up?');
-    if (confirmDelete) {
-      try {
-        await deleteFollowups(followupId);
-        setFollowUp((prevFollowUps) => prevFollowUps.filter((item) => item.id !== followupId));
-        window.confirm('Follow Up deleted successfully!');
-      } catch (error) {
-        console.error("Error deleting Follow Up:", error);
-        window.confirm('Error deleting Follow Up.');
-      }
+  // Handle creating a new follow-up
+  const handleCreateFollowUp = async (newFollowUp) => {
+    try {
+      console.log("Creating follow-up with data:", newFollowUp); // Log the data
+      await createFollowup(newFollowUp);
+      setIsCreating(false);
+      await fetchFollowups();
+      setMessage("Follow-up created successfully!");
+    } catch (error) {
+      console.error("Error creating follow-up:", error);
+      setMessage("Error creating follow-up.");
     }
   };
 
+  // Set the follow-up to be edited
+  const handleEditFollowUp = (followUp) => {
+    setCurrentFollowUp(followUp);
+    setIsEditing(true);
+  };
+
+  // Handle updating an existing follow-up
+  const handleUpdateFollowUp = async (updatedFollowUp) => {
+    try {
+      await updateFollowup(currentFollowUp.id, updatedFollowUp);
+      setIsEditing(false);
+      setCurrentFollowUp(null);
+      await fetchFollowups();
+      setMessage("Follow-up updated successfully!");
+    } catch (error) {
+      console.error("Error updating follow-up:", error);
+      setMessage("Error updating follow-up.");
+    }
+  };
+
+  // Handle deleting a follow-up
+  const handleDeleteFollowUp = async (followUpId) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this follow-up?"
+    );
+    if (confirmDelete) {
+      try {
+        await deleteFollowups(followUpId);
+        setFollowUpList((prevList) =>
+          prevList.filter((followUp) => followUp.id !== followUpId)
+        );
+        setMessage("Follow-up deleted successfully!");
+      } catch (error) {
+        console.error("Error deleting follow-up:", error);
+        setMessage("Error deleting follow-up.");
+      }
+    }
+  };
 
   return (
     <div className="followup-card-list-container">
       <div className="followup-header-container">
-        <h3 className="followup-card-list-header">Follow Up</h3>
+        <h3 className="followup-card-list-header">Follow Ups</h3>
         <button className="add-followups" onClick={() => setIsCreating(true)}>
-          <AddCircleOutlineIcon style={{ verticalAlign: "middle", marginRight: "8px" }}/>
+          <AddCircleOutlineIcon
+            style={{ verticalAlign: "middle", marginRight: "8px" }}
+          />
           Generate Follow Up
         </button>
       </div>
+
       <div className="followup-cards-container">
-        {FollowUp.map((automatedmails) => (
-          <div key={automatedmails.id} className="followup-card">
+        {followUpList.map((followUp) => (
+          <div key={followUp.id} className="followup-card">
             <div className="followup-card-content">
               <div className="followup-card-row">
                 <span className="followup-label">Name (E/C):</span>
                 <span className="followup-value">
-                  {automatedmails.customer_id ? "(C)" : "(E)"} {automatedmails.name}
+                  {followUp.customer_id ? "(C)" : "(E)"} {followUp.name}
                 </span>
               </div>
               <div className="followup-card-row">
                 <span className="followup-label">Email Type:</span>
-                <span className="followup-value">{automatedmails.emailType}</span>
+                <span className="followup-value">{followUp.emailType}</span>
               </div>
               <div className="followup-card-row">
                 <span className="followup-label">Trigger Date:</span>
                 <span className="followup-value">
-                  {new Date(automatedmails.trigger_date).toLocaleDateString()}
+                  {new Date(followUp.trigger_date).toLocaleDateString()}
                 </span>
               </div>
               <div className="followup-card-row">
                 <span className="followup-label">Duration:</span>
-                <span className="followup-value">{automatedmails.duration}</span>
+                <span className="followup-value">{followUp.duration}</span>
               </div>
               <div className="followup-card-row">
                 <span className="followup-label">Status:</span>
-                <span className="followup-value">{automatedmails.status}</span>
+                <span className="followup-value">{followUp.status}</span>
               </div>
             </div>
             <div className="followup-card-actions">
-              <button className="followup-card-btn followup-edit-btn" >Edit</button>
-              <button className="followup-card-btn followup-delete-btn" onClick={() => handleDelete(automatedmails.id)}>Delete</button>
+              <button
+                className="followup-card-btn followup-edit-btn"
+                onClick={() => handleEditFollowUp(followUp)}
+              >
+                Edit
+              </button>
+              <button
+                className="followup-card-btn followup-delete-btn"
+                onClick={() => handleDeleteFollowUp(followUp.id)}
+              >
+                Delete
+              </button>
             </div>
           </div>
         ))}
       </div>
 
+      {/* Create Follow-up Modal */}
       <CreateFollowUp
-          onCreate={handleCreateClick}
-          followUpToEdit={followUpToEdit}
+        onCreate={handleCreateFollowUp}
+        onCancel={() => setIsCreating(false)}
+        isOpen={isCreating}
+      />
+
+      {/* Edit Follow-up Modal */}
+      {isEditing && currentFollowUp && (
+        <CreateFollowUp
+          onCreate={handleUpdateFollowUp}
+          followupToEdit={currentFollowUp}
           onCancel={() => {
-            setFollowUpToEdit(null);
-            setIsCreating(false);
+            setIsEditing(false);
+            setCurrentFollowUp(null);
           }}
-          isOpen={isCreating || followUpToEdit !== null} // Open modal if creating or editing
+          isOpen={isEditing}
         />
+      )}
+
+      {/* Message Display */}
+      {message && <div className="message">{message}</div>}
     </div>
   );
 };

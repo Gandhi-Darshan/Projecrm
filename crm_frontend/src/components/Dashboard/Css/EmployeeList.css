@@ -61,7 +61,7 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
-  max-height: 350px; /* Limit the height of the list */
+  max-height: 300px; /* Limit the height of the list */
   overflow-y: auto; /* Add vertical scroll */
 }
 

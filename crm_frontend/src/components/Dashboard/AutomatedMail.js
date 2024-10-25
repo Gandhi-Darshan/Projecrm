@@ -120,7 +120,7 @@ const AutomatedMail = () => {
           ):(
             <div className="all-followup">
             No FollowUp for today.
-            <li><a><Link to="/followup">View History for FollowUp</Link></a></li>
+            <li><a><Link to="/followups">View History for FollowUp</Link></a></li>
             </div> 
           )}
 

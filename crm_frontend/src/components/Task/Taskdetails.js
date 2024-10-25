@@ -20,24 +20,37 @@ const TaskDetails = () => {
     getTaskDetails();
   }, [id]);
 
-  const handleDelete = async () => {
-    try {
-      await deleteTask(id);
-      console.log("Task deleted, navigating to /tasks"); // Debug log
-      navigate("/tasks");
-    } catch (error) {
-      console.error("Error deleting task:", error);
+  const handleDelete = async (id) => {
+    // Confirmation dialog
+    const confirmDelete = window.confirm("Are you sure you want to delete this task?");
+    
+    if (confirmDelete) {
+      try {
+        await deleteTask(id);
+        alert("Task deleted successfully!");  // Message after deletion
+        console.log("Task deleted, navigating to /tasks"); // Debug log
+        navigate("/ lydff");  // Redirect to tasks list or home page
+      } catch (error) {
+        console.error("Error deleting task:", error);
+        alert("Failed to delete the task. Please try again.");  // Error message
+      }
     }
   };
 
+  // Update task with success message
   const handleUpdate = async (id, updatedTaskData) => {
-    console.log(updatedTaskData);
-    await updateTask(id, updatedTaskData);
-    setTask(updatedTaskData);
-    window.location.reload();
-    setIsEditing(false); // Close edit mode after updating
+    try {
+      console.log(updatedTaskData);
+      await updateTask(id, updatedTaskData);
+      setTask(updatedTaskData);
+      alert("Task updated successfully!");  // Message after update
+      navigate("/");  // Redirect to tasks list or home page
+      setIsEditing(false); // Close edit mode after updating
+    } catch (error) {
+      console.error("Error updating task:", error);
+      alert("Failed to update the task. Please try again.");  // Error message
+    }
   };
-
   return (
     <div className="task-details-container">
       <h2>Task Details</h2>

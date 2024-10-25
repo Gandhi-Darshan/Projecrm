@@ -1,20 +1,27 @@
 const API_URL = "http://localhost:5000/api"; // Adjust to your API URL
 
-//Task API
+// Task API
 export const fetchTasks = async () => {
   const response = await fetch(`${API_URL}/tasks`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch tasks");
+  }
   return await response.json();
 };
 
 export const AddTasks = async (task) => {
-  await fetch(`${API_URL}/tasks`, {
+  const response = await fetch(`${API_URL}/tasks`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(task),
   });
+  if (!response.ok) {
+    throw new Error("Failed to add task");
+  }
 };
+
 export const deleteTask = async (id) => {
   const response = await fetch(`${API_URL}/tasks/${id}`, {
     method: "DELETE",
@@ -23,12 +30,14 @@ export const deleteTask = async (id) => {
   if (!response.ok) {
     throw new Error("Failed to delete task");
   }
-
   return await response.json();
 };
 
 export const fetchTaskById = async (id) => {
   const response = await fetch(`${API_URL}/tasks/${id}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch task by ID");
+  }
   return await response.json();
 };
 
@@ -40,17 +49,119 @@ export const updateTask = async (id, taskData) => {
     },
     body: JSON.stringify(taskData),
   });
+  if (!response.ok) {
+    throw new Error("Failed to update task");
+  }
   return await response.json();
 };
 
 // Customer API
 export const fetchCustomers = async () => {
   const response = await fetch(`${API_URL}/customers`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch customers");
+  }
   return await response.json();
 };
 
+// Fetch Customer by ID
+export const fetchCustomersbyid = async (id) => {
+  const response = await fetch(`${API_URL}/customers/${id}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch Customer");
+  }
+  return await response.json();
+};
 
-//Employee API
+// Add customer
+export const AddCustomers = async (customerdata) => {
+  const response = await fetch(`${API_URL}/customers`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(customerdata),
+  });
+  if (!response.ok) {
+    throw new Error("Failed to add customer");
+  }
+};
+
+// Update customer
+export const UpdateCustomers = async (id, customerdata) => {
+  const response = await fetch(`${API_URL}/customers/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(customerdata),
+  });
+  if (!response.ok) {
+    throw new Error("Failed to update customer");
+  }
+};
+
+// Delete customer
+export const deleteCustomer = async (id) => {
+  const response = await fetch(`${API_URL}/customers/${id}`, {
+    method: "DELETE",
+  });
+  if (!response.ok) {
+    throw new Error("Failed to delete customer");
+  }
+  return await response.json();
+};
+
+// Insurance API
+// Fetch all insurance
+export const fetchinsurance = async () => {
+  const response = await fetch(`${API_URL}/insurances`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch insurances");
+  }
+  return await response.json();
+};
+
+// Fetch insurance by ID
+export const fetchinsurancebyid = async (id) => {
+  const response = await fetch(`${API_URL}/insurances/${id}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch insurance");
+  }
+  return await response.json();
+};
+
+// Add Insurance 
+export const AddInsurance = async (insurancedata) => {
+  const response = await fetch(`${API_URL}/insurances`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(insurancedata),
+  });
+  if (!response.ok) {
+    throw new Error("Failed to create Insurance");
+  }
+  return await response.json();
+};
+
+// Update Insurance
+export const UpdateInsurance = async (id, insurancedata) => {
+  const response = await fetch(`${API_URL}/insurances/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(insurancedata),
+  });
+  if (!response.ok) {
+    throw new Error("Failed to update Insurance");
+  }
+  return await response.json();
+};
+
+// Employee API
 // Fetch all employees
 export const fetchEmployees = async () => {
   const response = await fetch(`${API_URL}/employees`);
@@ -110,9 +221,8 @@ export const deleteEmployee = async (id) => {
   return await response.json();
 };
 
-
-//  followUps Api
-//Get Followups
+// FollowUps API
+// Get FollowUps
 export const fetchAutomated = async () => {
   const response = await fetch(`${API_URL}/followups`);
   if (!response.ok) {
@@ -120,22 +230,23 @@ export const fetchAutomated = async () => {
   }
   return await response.json();
 };
-//create FollowUps
-export const createFollowup = async (followupdata) => {
-    const response = await fetch(`${API_URL}/followups`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(followupdata),
-    });
-    if (!response.ok) {
-      throw new Error("Failed to create FollowUps");
-    }
-    return await response.json();   
 
+// Create FollowUps
+export const createFollowup = async (followupdata) => {
+  const response = await fetch(`${API_URL}/followups`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(followupdata),
+  });
+  if (!response.ok) {
+    throw new Error("Failed to create FollowUps");
+  }
+  return await response.json();
 };
-//update FollowUps
+
+// Update FollowUps
 export const updateFollowup = async (id, followupdata) => {
   const response = await fetch(`${API_URL}/followups/${id}`, {
     method: "PUT",
@@ -145,12 +256,12 @@ export const updateFollowup = async (id, followupdata) => {
     body: JSON.stringify(followupdata),
   });
   if (!response.ok) {
-    throw new Error("Failed to update employee");
+    throw new Error("Failed to update FollowUps");
   }
   return await response.json();
 };
-//Delete FollowUps
 
+// Delete FollowUps
 export const deleteFollowups = async (id) => {
   const response = await fetch(`${API_URL}/followups/${id}`, {
     method: "DELETE",
@@ -160,6 +271,3 @@ export const deleteFollowups = async (id) => {
   }
   return await response.json();
 };
-
-
-// Similar functions for fetchCustomers, createCustomer, updateCustomer, deleteCustomer, etc.

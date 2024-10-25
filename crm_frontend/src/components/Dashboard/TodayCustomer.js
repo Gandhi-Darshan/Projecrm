@@ -41,7 +41,7 @@ const CustomerCard = () => {
           customers.map((customer) => (
             <div className="customer-item" key={customer.id}>
               <div className="customer-name">{customer.name}</div>
-              <div className="customer-info">
+              <div className="customer_dd">
                 <p>Email Subscribed: <span className="customer-email">{customer.email_subscribed ? 'Yes' : 'No'}</span></p>
                 <p>Visited Date: <span className="customer-visited-date">{new Date(customer.createdAt).toLocaleDateString()}</span></p>
               </div>

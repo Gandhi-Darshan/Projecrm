@@ -46,7 +46,9 @@
   margin-right: 80px;
   display: inline-flex;
   align-items: center;
+  text-decoration: none;
 }
+
 
 .add-customer:hover {
   background-color: #1abc9c;

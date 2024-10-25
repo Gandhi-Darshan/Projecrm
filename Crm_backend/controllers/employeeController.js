@@ -55,7 +55,7 @@ const deleteEmployee = async (req, res) => {
 
     // If no pending tasks, proceed to delete the employee
     await Employee.findByIdAndDelete(id);
-    res.status(204).json({ message: 'Employee deleted' });
+    res.status(200).json({ message: 'Employee deleted' });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
